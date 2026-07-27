@@ -9,27 +9,39 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ── Fixed photo background ── */
+    /* image aspect ratio: 6832/1328 = 5.1446 → width at 60vh height = 308.7vh */
+    @keyframes bgPan {
+      from { background-position: 0px 50%, 308.7vh 50%; }
+      to   { background-position: -308.7vh 50%, 0px 50%; }
+    }
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: url('background.png') center / cover no-repeat;
+      background-image: url('background.jpg'), url('background.jpg');
+      background-size: auto 60%, auto 60%;
+      background-repeat: no-repeat, no-repeat;
+      background-position: 0px 50%, 308.7vh 50%;
       z-index: -2;
+      mask-image: radial-gradient(ellipse 78% 55% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
+      -webkit-mask-image: radial-gradient(ellipse 78% 55% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
+      animation: bgPan 80s linear infinite;
     }
     body::after {
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.62);
+      background: rgba(0, 0, 0, 0.52);
       z-index: -1;
       transition: background 0.4s ease;
     }
-    body.lighter::after { background: rgba(0, 0, 0, 0.42); }
+    body.lighter::after { background: rgba(0, 0, 0, 0.32); }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       min-height: 100svh;
       color: #f0f0f0;
+      background-color: #060606;
     }
 
     /* ══════════════════════════════
@@ -359,13 +371,11 @@
 </div>
 
 <script>
-  // ── Avatar fallback ──
   const img = document.getElementById('avatarImg');
   const av  = document.getElementById('avatar');
   img.addEventListener('load',  () => { img.classList.add('loaded'); av.classList.add('has-photo'); });
   img.addEventListener('error', () => img.remove());
 
-  // ── Overlay brightness toggle ──
   let lighter = false;
   function toggleOverlay() {
     lighter = !lighter;

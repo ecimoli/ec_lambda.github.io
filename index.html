@@ -226,14 +226,17 @@
     .link-label { flex: 1; font-size: 14px; font-weight: 400; }
 
     /* Icon colours — brightened for dark bg */
-    .yt  svg { fill: #FF5555; }
-    .ig  svg { fill: #E87CB0; }
-    .tw  svg { fill: #dddddd; }
-    .li  svg { fill: #6AABF7; }
-    .vm  svg { fill: #5DD4F0; }
-    .ps  svg { fill: #5B8DE8; }
-    .gs  svg { fill: #7AB6FF; }
-    .oc  svg { fill: #C8E86A; }
+    .yt   svg { fill: #FF5555; }
+    .ig   svg { fill: #E87CB0; }
+    .tw   svg { fill: #dddddd; }
+    .li   svg { fill: #6AABF7; }
+    .vm   svg { fill: #5DD4F0; }
+    .ps   svg { fill: #5B8DE8; }
+    .gs   svg { fill: #7AB6FF; }
+    .oc   svg { fill: #C8E86A; }
+    .bl   svg { fill: #E8845A; }
+    .gdb  svg { fill: #9B72CF; }
+    .imd  svg { fill: #F5C518; }
 
     .rg-text {
       font-size: 11px; font-weight: 800;
@@ -244,6 +247,17 @@
     .fl-icon span { display: block; width: 8px; height: 8px; border-radius: 50%; }
     .fl-dot-pink { background: #FF70AB; }
     .fl-dot-blue { background: #5599EE; }
+
+    /* ── CV placeholder ── */
+    .cv-placeholder {
+      padding: 10px 8px;
+      border: 1px dashed rgba(255,255,255,0.12);
+      border-radius: 10px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      letter-spacing: 0.2px;
+    }
 
     /* ── Footer / toggle ── */
     .footer { margin-top: 32px; text-align: center; }
@@ -321,6 +335,7 @@
   <!-- ── Right / Bottom: Links ── -->
   <main class="links-section">
 
+    <!-- Research -->
     <div class="section-label">Research</div>
     <div class="links">
 
@@ -343,6 +358,15 @@
 
     <hr>
 
+    <!-- CV -->
+    <div class="section-label">CV</div>
+    <div class="links">
+      <div class="cv-placeholder">Academic CV — details coming soon</div>
+    </div>
+
+    <hr>
+
+    <!-- Social & Media -->
     <div class="section-label">Social & Media</div>
     <div class="links">
 
@@ -376,9 +400,32 @@
         <span class="link-label">Flickr</span>
       </a>
 
+    </div>
+
+    <hr>
+
+    <!-- Games & Film -->
+    <div class="section-label">Games & Film</div>
+    <div class="links">
+
       <a class="link-btn ps" href="https://psnprofiles.com/EC_lambda" target="_blank" rel="noopener noreferrer">
         <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M21 6H3a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h18a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2zM11 11H9v2H7v-2H5V9h2V7h2v2h2v2zm5.5 2a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg></div>
         <span class="link-label">PSN Profiles</span>
+      </a>
+
+      <a class="link-btn bl" href="#" target="_blank" rel="noopener noreferrer">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M4 6h16v2H4zm2-4h12v2H6zm14 8H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2zm0 10H4v-8h16v8z"/></svg></div>
+        <span class="link-label">Backloggd</span>
+      </a>
+
+      <a class="link-btn gdb" href="#" target="_blank" rel="noopener noreferrer">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M7.97 16L5 19c-.67.67-2 .19-2-1V6c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H7.97zM11 11H9v2H7v-2H5V9h2V7h2v2h2v2zm5.5 2a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm3-3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/></svg></div>
+        <span class="link-label">IGDB</span>
+      </a>
+
+      <a class="link-btn imd" href="#" target="_blank" rel="noopener noreferrer">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M14 2H4C2.9 2 2 2.9 2 4v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8l-8-6zm-1 7V3.5L18.5 9H13zm-8 7V8h2v8H5zm5-8h2l1 3 1-3h2v8h-2v-5l-1 3h-1l-1-3v5h-1V8z"/></svg></div>
+        <span class="link-label">IMDb</span>
       </a>
 
     </div>

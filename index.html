@@ -9,33 +9,35 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ── Fixed photo background ── */
-    /* image AR = 6832/1328 = 5.1446
-       mobile cover:  one image width = 100vh × 5.1446 = 514.5vh
-       desktop 72vh:  one image width =  72vh × 5.1446 = 370.4vh */
+    /* MOBILE — single image, % pan (Safari-safe) */
     @keyframes bgPanMobile {
-      from { background-position: 0px 50%, 514.5vh 50%; }
-      to   { background-position: -514.5vh 50%, 0px 50%; }
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
+    /* DESKTOP — two-image seamless loop (AR 5.1446, 72vh → 370.4vh per copy) */
     @keyframes bgPanDesktop {
       from { background-position: 0px 50%, 370.4vh 50%; }
       to   { background-position: -370.4vh 50%, 0px 50%; }
     }
-    /* MOBILE — full screen, no mask */
+    /* MOBILE — full screen cover, no mask */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url('background.jpg'), url('background.jpg');
-      background-size: cover, cover;
-      background-repeat: no-repeat, no-repeat;
-      background-position: 0px 50%, 514.5vh 50%;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 0% 50%;
       z-index: -2;
-      animation: bgPanMobile 120s linear infinite;
+      animation: bgPanMobile 120s ease-in-out infinite;
     }
-    /* DESKTOP — centred band with fade */
+    /* DESKTOP — centred band with fade + seamless loop */
     @media (min-width: 720px) {
       body::before {
+        background-image: url('background.jpg'), url('background.jpg');
         background-size: auto 72%, auto 72%;
+        background-repeat: no-repeat, no-repeat;
         background-position: 0px 50%, 370.4vh 50%;
         mask-image: radial-gradient(ellipse 82% 65% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
         -webkit-mask-image: radial-gradient(ellipse 82% 65% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);

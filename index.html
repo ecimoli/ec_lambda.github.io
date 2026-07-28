@@ -9,11 +9,10 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ── Fixed photo background ── */
-    /* MOBILE — single image, % pan (Safari-safe) */
+    /* MOBILE — single image, centered pan */
     @keyframes bgPanMobile {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0%, 100% { background-position: 30% 50%; }
+      50%       { background-position: 70% 50%; }
     }
     /* DESKTOP — two-image seamless loop (AR 5.1446, 72vh → 370.4vh per copy) */
     @keyframes bgPanDesktop {

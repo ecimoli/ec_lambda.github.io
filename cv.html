@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic CV — Dr Emiliano Cimoli">
+  <title>CV — Dr Emiliano Cimoli</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Background (same as main page) ── */
+    @keyframes bgPanMobile {
+      0%, 100% { background-position: 30% 50%; }
+      50%       { background-position: 70% 50%; }
+    }
+    @keyframes bgPanDesktop {
+      from { background-position: 0px 50%, 370.4vh 50%; }
+      to   { background-position: -370.4vh 50%, 0px 50%; }
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('background.jpg');
+      background-size: auto 58%;
+      background-repeat: no-repeat;
+      background-position: 30% 50%;
+      z-index: -2;
+      animation: bgPanMobile 90s ease-in-out infinite;
+    }
+    @media (min-width: 720px) {
+      body::before {
+        background-image: url('background.jpg'), url('background.jpg');
+        background-size: auto 72%, auto 72%;
+        background-repeat: no-repeat, no-repeat;
+        background-position: 0px 50%, 370.4vh 50%;
+        mask-image: radial-gradient(ellipse 82% 65% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
+        -webkit-mask-image: radial-gradient(ellipse 82% 65% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
+        animation: bgPanDesktop 120s linear infinite;
+      }
+    }
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.62);
+      z-index: -1;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      min-height: 100svh;
+      color: #f0f0f0;
+      background-color: #060606;
+    }
+
+    /* ── Page shell ── */
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    @media (min-width: 720px) {
+      .page { padding: 64px 40px 96px; }
+    }
+
+    /* ── Back link ── */
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.38);
+      text-decoration: none;
+      margin-bottom: 48px;
+      transition: color 0.15s;
+    }
+    .back:hover { color: rgba(255,255,255,0.75); }
+    .back svg { width: 14px; height: 14px; fill: currentColor; }
+
+    /* ── Page header ── */
+    .cv-header { margin-bottom: 52px; }
+
+    .cv-name {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.6px;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    @media (min-width: 720px) { .cv-name { font-size: 34px; } }
+
+    .cv-title {
+      font-size: 14px;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 18px;
+    }
+
+    .cv-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .cv-tag {
+      font-size: 10.5px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ── Section ── */
+    .cv-section { margin-bottom: 44px; }
+
+    .cv-section-label {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.6px;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── Bio text ── */
+    .bio {
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+    }
+    .bio p + p { margin-top: 12px; }
+
+    /* ── Timeline entries ── */
+    .entries { display: flex; flex-direction: column; gap: 24px; }
+
+    .entry { display: flex; gap: 16px; }
+
+    .entry-date {
+      flex-shrink: 0;
+      width: 72px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.28);
+      padding-top: 2px;
+      text-align: right;
+      line-height: 1.4;
+    }
+
+    .entry-body { flex: 1; min-width: 0; }
+
+    .entry-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 2px;
+    }
+    .entry-org {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.42);
+      margin-bottom: 5px;
+    }
+    .entry-desc {
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.6;
+    }
+
+    /* ── Publication list ── */
+    .pub-list { display: flex; flex-direction: column; gap: 18px; }
+
+    .pub {
+      border-left: 2px solid rgba(255,255,255,0.1);
+      padding-left: 14px;
+    }
+    .pub-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 3px;
+      line-height: 1.45;
+    }
+    .pub-meta {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.35);
+    }
+    .pub-link {
+      font-size: 11px;
+      color: rgba(168,200,248,0.7);
+      text-decoration: none;
+      margin-left: 6px;
+    }
+    .pub-link:hover { color: rgba(168,200,248,1); }
+
+    /* ── Skills grid ── */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .skill {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ── Footer note ── */
+    .cv-footer {
+      margin-top: 56px;
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    /* ── Entrance animation ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .cv-header  { animation: fadeUp 0.45s cubic-bezier(0.22,1,0.36,1) both; }
+    .cv-section { opacity: 0; animation: fadeUp 0.4s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .cv-section:nth-child(2) { animation-delay: 0.08s; }
+    .cv-section:nth-child(3) { animation-delay: 0.14s; }
+    .cv-section:nth-child(4) { animation-delay: 0.20s; }
+    .cv-section:nth-child(5) { animation-delay: 0.26s; }
+    .cv-section:nth-child(6) { animation-delay: 0.32s; }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <a class="back" href="index.html">
+    <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    Back
+  </a>
+
+  <header class="cv-header">
+    <div class="cv-name">Dr Emiliano Cimoli</div>
+    <div class="cv-title">Marine Scientist &amp; Researcher</div>
+    <div class="cv-tags">
+      <span class="cv-tag">Remote Sensing</span>
+      <span class="cv-tag">Sea Ice Optics</span>
+      <span class="cv-tag">Polar Oceanography</span>
+      <span class="cv-tag">Radiative Transfer</span>
+      <span class="cv-tag">Machine Learning</span>
+    </div>
+  </header>
+
+  <section class="cv-section">
+    <div class="cv-section-label">About</div>
+    <div class="bio">
+      <p>Placeholder — add your bio here once you share the Word file. This section will summarise your research focus, career arc, and key scientific contributions.</p>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="cv-section-label">Positions</div>
+    <div class="entries">
+      <div class="entry">
+        <div class="entry-date">2024 —<br>present</div>
+        <div class="entry-body">
+          <div class="entry-title">Position Title</div>
+          <div class="entry-org">Institution / Organisation</div>
+          <div class="entry-desc">Brief description of role and responsibilities.</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-date">2021 —<br>2024</div>
+        <div class="entry-body">
+          <div class="entry-title">Previous Position</div>
+          <div class="entry-org">Institution / Organisation</div>
+          <div class="entry-desc">Brief description of role and responsibilities.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="cv-section-label">Education</div>
+    <div class="entries">
+      <div class="entry">
+        <div class="entry-date">20xx —<br>20xx</div>
+        <div class="entry-body">
+          <div class="entry-title">PhD — Degree title</div>
+          <div class="entry-org">University</div>
+          <div class="entry-desc">Thesis: "Thesis title goes here"</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-date">20xx —<br>20xx</div>
+        <div class="entry-body">
+          <div class="entry-title">MSc — Degree title</div>
+          <div class="entry-org">University</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="cv-section-label">Selected Publications</div>
+    <div class="pub-list">
+      <div class="pub">
+        <div class="pub-title">Publication title goes here — to be filled from Word file</div>
+        <div class="pub-meta">Author A, <strong style="color:rgba(255,255,255,0.55)">Cimoli E</strong>, Author C · Journal · Year<a class="pub-link" href="#">DOI ↗</a></div>
+      </div>
+      <div class="pub">
+        <div class="pub-title">Second publication title goes here</div>
+        <div class="pub-meta"><strong style="color:rgba(255,255,255,0.55)">Cimoli E</strong>, Author B · Journal · Year<a class="pub-link" href="#">DOI ↗</a></div>
+      </div>
+      <div class="pub">
+        <div class="pub-title">Third publication title goes here</div>
+        <div class="pub-meta">Author A, Author B, <strong style="color:rgba(255,255,255,0.55)">Cimoli E</strong> · Journal · Year<a class="pub-link" href="#">DOI ↗</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cv-section">
+    <div class="cv-section-label">Skills &amp; Tools</div>
+    <div class="skills">
+      <span class="skill">Python</span>
+      <span class="skill">MATLAB</span>
+      <span class="skill">R</span>
+      <span class="skill">Remote Sensing</span>
+      <span class="skill">GIS</span>
+      <span class="skill">Radiative Transfer Modelling</span>
+      <span class="skill">Field Oceanography</span>
+      <span class="skill">Scientific Writing</span>
+    </div>
+  </section>
+
+  <div class="cv-footer">Full CV available on request · emicimoli@gmail.com</div>
+
+</div>
+
+</body>
+</html>

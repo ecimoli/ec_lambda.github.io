@@ -14,10 +14,10 @@
       0%, 100% { background-position: 30% 50%; }
       50%       { background-position: 70% 50%; }
     }
-    /* DESKTOP — two-image seamless loop (AR 5.1446, 72vh → 370.4vh per copy) */
+    /* DESKTOP — two-image seamless loop (AR 5.1446, 90vh → 463.0vh per copy) */
     @keyframes bgPanDesktop {
-      from { background-position: 0px 50%, 370.4vh 50%; }
-      to   { background-position: -370.4vh 50%, 0px 50%; }
+      from { background-position: 0px 50%, 463.0vh 50%; }
+      to   { background-position: -463.0vh 50%, 0px 50%; }
     }
     /* MOBILE — centred band, no mask */
     body::before {
@@ -25,7 +25,7 @@
       position: fixed;
       inset: 0;
       background-image: url('background.jpg');
-      background-size: auto 58%;
+      background-size: auto 80%;
       background-repeat: no-repeat;
       background-position: 30% 50%;
       z-index: -2;
@@ -35,9 +35,9 @@
     @media (min-width: 720px) {
       body::before {
         background-image: url('background.jpg'), url('background.jpg');
-        background-size: auto 72%, auto 72%;
+        background-size: auto 90%, auto 90%;
         background-repeat: no-repeat, no-repeat;
-        background-position: 0px 50%, 370.4vh 50%;
+        background-position: 0px 50%, 463.0vh 50%;
         mask-image: radial-gradient(ellipse 82% 65% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
         -webkit-mask-image: radial-gradient(ellipse 82% 65% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
         animation: bgPanDesktop 120s linear infinite;

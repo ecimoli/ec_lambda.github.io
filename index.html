@@ -19,17 +19,17 @@
       from { background-position: 0px 50%, 370.4vh 50%; }
       to   { background-position: -370.4vh 50%, 0px 50%; }
     }
-    /* MOBILE — full screen cover, no mask */
+    /* MOBILE — centred band, no mask */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background-image: url('background.jpg');
-      background-size: cover;
+      background-size: auto 58%;
       background-repeat: no-repeat;
-      background-position: 0% 50%;
+      background-position: 30% 50%;
       z-index: -2;
-      animation: bgPanMobile 120s ease-in-out infinite;
+      animation: bgPanMobile 90s ease-in-out infinite;
     }
     /* DESKTOP — centred band with fade + seamless loop */
     @media (min-width: 720px) {

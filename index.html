@@ -17,10 +17,10 @@
       0%, 100% { background-position: 30% 50%; }
       50%       { background-position: 70% 50%; }
     }
-    /* DESKTOP — two-image seamless loop (AR 5.1446, 80vh → 411.6vh per copy) */
+    /* DESKTOP — two-image seamless loop (AR 5.1446, 72vh → 370.4vh per copy) */
     @keyframes bgPanDesktop {
-      from { background-position: 0px 50%, 411.6vh 50%; }
-      to   { background-position: -411.6vh 50%, 0px 50%; }
+      from { background-position: 0px 50%, 370.4vh 50%; }
+      to   { background-position: -370.4vh 50%, 0px 50%; }
     }
     /* MOBILE — centred band, no mask */
     body::before {
@@ -28,7 +28,7 @@
       position: fixed;
       inset: 0;
       background-image: url('background.jpg');
-      background-size: auto 70%;
+      background-size: auto 62%;
       background-repeat: no-repeat;
       background-position: 30% 50%;
       z-index: -2;
@@ -38,9 +38,9 @@
     @media (min-width: 720px) {
       body::before {
         background-image: url('background.jpg'), url('background.jpg');
-        background-size: auto 80%, auto 80%;
+        background-size: auto 72%, auto 72%;
         background-repeat: no-repeat, no-repeat;
-        background-position: 0px 50%, 411.6vh 50%;
+        background-position: 0px 50%, 370.4vh 50%;
         mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 72%, transparent 100%);
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 72%, transparent 100%);
         animation: bgPanDesktop 120s linear infinite;
@@ -275,6 +275,48 @@
     .fl-icon span { display: block; width: 8px; height: 8px; border-radius: 50%; }
     .fl-dot-pink { background: #FF70AB; }
     .fl-dot-blue { background: #5599EE; }
+
+    /* ── Mobile: profile fixed at top ── */
+    @media (max-width: 719px) {
+      .profile {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        z-index: 100;
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 0;
+        padding: 10px 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        text-align: left;
+        background: rgba(6, 6, 6, 0.78);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255,255,255,0.10);
+        animation: none;
+      }
+      .profile .avatar {
+        width: 40px; height: 40px;
+        flex-shrink: 0;
+        margin: 0;
+      }
+      .profile .avatar-initials { font-size: 14px; letter-spacing: -1px; }
+      .profile .name  { font-size: 15px; margin-bottom: 1px; }
+      .profile .handle { font-size: 11px; margin-bottom: 0; }
+      .profile .aliases { display: none; }
+      .profile .footer { margin-top: 0; margin-left: auto; }
+
+      /* Offset page content below the fixed bar (~64px tall) */
+      .page { padding-top: 74px; }
+
+      /* Light mode: white frosted header */
+      body.lighter .profile {
+        background: rgba(255,255,255,0.82);
+        border-bottom-color: rgba(0,0,0,0.10);
+      }
+    }
 
     /* ── Footer / toggle ── */
     .footer { margin-top: 32px; text-align: center; }

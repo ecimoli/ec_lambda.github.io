@@ -50,11 +50,16 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.32);
+      background: linear-gradient(to right, rgba(0,0,0,0.68) 0%, rgba(0,0,0,0.50) 38%, rgba(0,0,0,0.12) 100%);
       z-index: -1;
       transition: background 0.4s ease;
     }
     body.lighter::after { background: rgba(255, 255, 255, 0.30); }
+
+    /* Desktop — uniform overlay, no left gradient needed */
+    @media (min-width: 720px) {
+      body::after { background: rgba(0, 0, 0, 0.32); }
+    }
 
     /* ── Light mode text overrides ── */
     body.lighter                        { color: #111111; }

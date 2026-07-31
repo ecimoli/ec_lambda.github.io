@@ -51,7 +51,24 @@
       z-index: -1;
       transition: background 0.4s ease;
     }
-    body.lighter::after { background: rgba(0, 0, 0, 0.32); }
+    body.lighter::after { background: rgba(255, 255, 255, 0.93); }
+
+    /* ── Light mode text overrides ── */
+    body.lighter                        { color: #111111; }
+    body.lighter .name                  { color: #0a0a0a; }
+    body.lighter .handle                { color: rgba(0,0,0,0.45); }
+    body.lighter .alias                 { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.5); border-color: rgba(0,0,0,0.1); }
+    body.lighter hr                     { border-color: rgba(0,0,0,0.1); }
+    body.lighter .section-label         { color: rgba(0,0,0,0.32); }
+    body.lighter .link-btn              { color: rgba(0,0,0,0.72); }
+    body.lighter .link-btn:hover        { background: rgba(0,0,0,0.06); color: #000000; }
+    body.lighter .icon-wrap             { background: rgba(0,0,0,0.07); }
+    body.lighter .link-btn:hover .icon-wrap { background: rgba(0,0,0,0.12); }
+    body.lighter .overlay-btn           { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.12); color: rgba(0,0,0,0.45); }
+    body.lighter .overlay-btn:hover     { background: rgba(0,0,0,0.12); color: rgba(0,0,0,0.75); }
+    body.lighter .rg-text               { color: #1aaa9e; }
+    body.lighter .avatar                { border-color: rgba(0,0,0,0.18); background: rgba(0,0,0,0.06); }
+    body.lighter .avatar-initials       { color: rgba(0,0,0,0.5); }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;

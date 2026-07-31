@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Academic CV — Dr Emiliano Cimoli">
   <title>CV — Dr Emiliano Cimoli</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -22,7 +25,7 @@
       position: fixed;
       inset: 0;
       background-image: url('background.jpg');
-      background-size: auto 58%;
+      background-size: auto 62%;
       background-repeat: no-repeat;
       background-position: 30% 50%;
       z-index: -2;
@@ -34,8 +37,8 @@
         background-size: auto 72%, auto 72%;
         background-repeat: no-repeat, no-repeat;
         background-position: 0px 50%, 370.4vh 50%;
-        mask-image: radial-gradient(ellipse 82% 65% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
-        -webkit-mask-image: radial-gradient(ellipse 82% 65% at 50% 50%, black 5%, rgba(0,0,0,0.55) 40%, transparent 66%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 72%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 28%, black 72%, transparent 100%);
         animation: bgPanDesktop 120s linear infinite;
       }
     }
@@ -43,12 +46,12 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.62);
+      background: rgba(0, 0, 0, 0.70);
       z-index: -1;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
       min-height: 100svh;
       color: #f0f0f0;
       background-color: #060606;
@@ -56,12 +59,12 @@
 
     /* ── Page shell ── */
     .page {
-      max-width: 680px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 48px 24px 80px;
+      padding: 52px 24px 96px;
     }
     @media (min-width: 720px) {
-      .page { padding: 64px 40px 96px; }
+      .page { padding: 68px 48px 112px; }
     }
 
     /* ── Back link ── */
@@ -69,31 +72,58 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 12.5px;
+      font-size: 12px;
+      font-weight: 500;
       color: rgba(255,255,255,0.38);
       text-decoration: none;
-      margin-bottom: 48px;
+      margin-bottom: 44px;
       transition: color 0.15s;
     }
     .back:hover { color: rgba(255,255,255,0.75); }
     .back svg { width: 14px; height: 14px; fill: currentColor; }
 
     /* ── Page header ── */
-    .cv-header { margin-bottom: 52px; }
+    .cv-header { margin-bottom: 48px; }
 
     .cv-name {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: 700;
-      letter-spacing: -0.6px;
+      letter-spacing: -0.4px;
       color: #ffffff;
       margin-bottom: 4px;
     }
-    @media (min-width: 720px) { .cv-name { font-size: 34px; } }
+    @media (min-width: 720px) { .cv-name { font-size: 36px; } }
 
     .cv-title {
       font-size: 14px;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 18px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.50);
+      margin-bottom: 16px;
+    }
+
+    .cv-metrics {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .cv-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .cv-metric-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+    }
+    .cv-metric-lbl {
+      font-size: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: rgba(255,255,255,0.35);
     }
 
     .cv-tags {
@@ -103,94 +133,206 @@
     }
     .cv-tag {
       font-size: 10.5px;
+      font-weight: 500;
       padding: 3px 10px;
       border-radius: 100px;
       background: rgba(255,255,255,0.07);
-      color: rgba(255,255,255,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.45);
+      border: 1px solid rgba(255,255,255,0.10);
     }
 
-    /* ── Section ── */
-    .cv-section { margin-bottom: 44px; }
+    /* ── Sections ── */
+    .cv-section { margin-bottom: 48px; }
 
     .cv-section-label {
       font-size: 9px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1.6px;
-      color: rgba(255,255,255,0.28);
-      margin-bottom: 16px;
+      letter-spacing: 1.8px;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 18px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    /* ── Bio text ── */
+    /* ── Bio ── */
     .bio {
-      font-size: 14px;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.65);
+      font-size: 13.5px;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.62);
     }
     .bio p + p { margin-top: 12px; }
 
     /* ── Timeline entries ── */
-    .entries { display: flex; flex-direction: column; gap: 24px; }
+    .entries { display: flex; flex-direction: column; gap: 28px; }
 
-    .entry { display: flex; gap: 16px; }
+    .entry { display: flex; gap: 18px; }
 
     .entry-date {
       flex-shrink: 0;
-      width: 72px;
-      font-size: 11px;
+      width: 80px;
+      font-size: 10.5px;
+      font-weight: 500;
       color: rgba(255,255,255,0.28);
       padding-top: 2px;
       text-align: right;
-      line-height: 1.4;
+      line-height: 1.5;
     }
 
     .entry-body { flex: 1; min-width: 0; }
 
     .entry-title {
       font-size: 14px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.88);
+      font-weight: 700;
+      color: rgba(255,255,255,0.92);
       margin-bottom: 2px;
+      line-height: 1.4;
     }
     .entry-org {
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.42);
-      margin-bottom: 5px;
+      font-size: 12px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 7px;
     }
     .entry-desc {
       font-size: 12.5px;
-      color: rgba(255,255,255,0.38);
-      line-height: 1.6;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.65;
+    }
+    .entry-thesis {
+      font-size: 11.5px;
+      font-style: italic;
+      color: rgba(255,255,255,0.35);
+      margin-top: 5px;
     }
 
     /* ── Publication list ── */
-    .pub-list { display: flex; flex-direction: column; gap: 18px; }
+    .pub-list { display: flex; flex-direction: column; gap: 20px; }
 
     .pub {
-      border-left: 2px solid rgba(255,255,255,0.1);
+      border-left: 2px solid rgba(255,255,255,0.10);
       padding-left: 14px;
     }
+    .pub.first-author { border-left-color: rgba(168,200,248,0.45); }
+
     .pub-title {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 500;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 3px;
+      color: rgba(255,255,255,0.82);
+      margin-bottom: 4px;
       line-height: 1.45;
     }
     .pub-meta {
       font-size: 11.5px;
       color: rgba(255,255,255,0.35);
+      line-height: 1.5;
     }
-    .pub-link {
-      font-size: 11px;
-      color: rgba(168,200,248,0.7);
+    .pub-me { color: rgba(255,255,255,0.65); font-weight: 700; }
+    .pub-journal {
+      font-style: italic;
+      color: rgba(168,200,248,0.6);
+    }
+    .pub-doi {
+      font-size: 10.5px;
+      color: rgba(168,200,248,0.55);
       text-decoration: none;
-      margin-left: 6px;
+      margin-left: 5px;
+      white-space: nowrap;
     }
-    .pub-link:hover { color: rgba(168,200,248,1); }
+    .pub-doi:hover { color: rgba(168,200,248,1); }
+
+    .pub-stats {
+      margin-bottom: 18px;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.6;
+    }
+    .pub-stats a {
+      color: rgba(168,200,248,0.65);
+      text-decoration: none;
+    }
+    .pub-stats a:hover { color: rgba(168,200,248,1); }
+
+    /* ── Awards list ── */
+    .award-list { display: flex; flex-direction: column; gap: 10px; }
+    .award {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+    }
+    .award-year {
+      flex-shrink: 0;
+      width: 36px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.28);
+      text-align: right;
+    }
+    .award-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.45;
+    }
+    .award-org {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── Conference list ── */
+    .conf-list { display: flex; flex-direction: column; gap: 10px; }
+    .conf {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+    }
+    .conf-year {
+      flex-shrink: 0;
+      width: 36px;
+      font-size: 10.5px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.28);
+      text-align: right;
+    }
+    .conf-body { flex: 1; min-width: 0; }
+    .conf-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.45;
+    }
+    .conf-role {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      padding: 1px 7px;
+      border-radius: 100px;
+      margin-left: 7px;
+      vertical-align: middle;
+    }
+    .conf-role.invited  { background: rgba(245,197,24,0.15); color: rgba(245,197,24,0.8); }
+    .conf-role.talk     { background: rgba(168,200,248,0.12); color: rgba(168,200,248,0.7); }
+    .conf-role.poster   { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.4); }
+    .conf-loc { font-size: 11.5px; color: rgba(255,255,255,0.28); }
+
+    /* ── Media list ── */
+    .media-list { display: flex; flex-direction: column; gap: 14px; }
+    .media-item { }
+    .media-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.45;
+      margin-bottom: 2px;
+    }
+    .media-link {
+      font-size: 11.5px;
+      color: rgba(168,200,248,0.55);
+      text-decoration: none;
+    }
+    .media-link:hover { color: rgba(168,200,248,1); }
 
     /* ── Skills grid ── */
     .skills {
@@ -200,6 +342,7 @@
     }
     .skill {
       font-size: 12px;
+      font-weight: 500;
       padding: 5px 12px;
       border-radius: 8px;
       background: rgba(255,255,255,0.06);
@@ -207,13 +350,15 @@
       color: rgba(255,255,255,0.55);
     }
 
-    /* ── Footer note ── */
+    /* ── Footer ── */
     .cv-footer {
-      margin-top: 56px;
-      font-size: 11.5px;
-      color: rgba(255,255,255,0.2);
+      margin-top: 60px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.18);
       text-align: center;
     }
+    .cv-footer a { color: rgba(168,200,248,0.4); text-decoration: none; }
+    .cv-footer a:hover { color: rgba(168,200,248,0.8); }
 
     /* ── Entrance animation ── */
     @keyframes fadeUp {
@@ -222,11 +367,14 @@
     }
     .cv-header  { animation: fadeUp 0.45s cubic-bezier(0.22,1,0.36,1) both; }
     .cv-section { opacity: 0; animation: fadeUp 0.4s cubic-bezier(0.22,1,0.36,1) forwards; }
-    .cv-section:nth-child(2) { animation-delay: 0.08s; }
-    .cv-section:nth-child(3) { animation-delay: 0.14s; }
-    .cv-section:nth-child(4) { animation-delay: 0.20s; }
-    .cv-section:nth-child(5) { animation-delay: 0.26s; }
-    .cv-section:nth-child(6) { animation-delay: 0.32s; }
+    .cv-section:nth-child(2) { animation-delay: 0.06s; }
+    .cv-section:nth-child(3) { animation-delay: 0.11s; }
+    .cv-section:nth-child(4) { animation-delay: 0.16s; }
+    .cv-section:nth-child(5) { animation-delay: 0.21s; }
+    .cv-section:nth-child(6) { animation-delay: 0.26s; }
+    .cv-section:nth-child(7) { animation-delay: 0.31s; }
+    .cv-section:nth-child(8) { animation-delay: 0.36s; }
+    .cv-section:nth-child(9) { animation-delay: 0.41s; }
   </style>
 </head>
 <body>
@@ -240,99 +388,281 @@
 
   <header class="cv-header">
     <div class="cv-name">Dr Emiliano Cimoli</div>
-    <div class="cv-title">Marine Scientist &amp; Researcher</div>
+    <div class="cv-title">Marine & Polar Scientist · Hyperspectral Imaging · Remote Sensing</div>
+    <div class="cv-metrics">
+      <div class="cv-metric"><span class="cv-metric-val">13</span><span class="cv-metric-lbl">Publications</span></div>
+      <div class="cv-metric"><span class="cv-metric-val">234+</span><span class="cv-metric-lbl">Citations</span></div>
+      <div class="cv-metric"><span class="cv-metric-val">h=8</span><span class="cv-metric-lbl">h-index</span></div>
+      <div class="cv-metric"><span class="cv-metric-val">10+</span><span class="cv-metric-lbl">Field campaigns</span></div>
+    </div>
     <div class="cv-tags">
-      <span class="cv-tag">Remote Sensing</span>
+      <span class="cv-tag">Hyperspectral Imaging</span>
       <span class="cv-tag">Sea Ice Optics</span>
       <span class="cv-tag">Polar Oceanography</span>
+      <span class="cv-tag">UAV / ROV Systems</span>
       <span class="cv-tag">Radiative Transfer</span>
       <span class="cv-tag">Machine Learning</span>
+      <span class="cv-tag">Terrestrial Ecology</span>
     </div>
   </header>
 
+  <!-- Profile -->
   <section class="cv-section">
-    <div class="cv-section-label">About</div>
+    <div class="cv-section-label">Profile</div>
     <div class="bio">
-      <p>Placeholder — add your bio here once you share the Word file. This section will summarise your research focus, career arc, and key scientific contributions.</p>
+      <p>Building upon a solid foundation in civil and environmental engineering, I have specialised in optical sensing and geomatics. Over the past decade, my research has focused on advancing hyperspectral imaging methods to map biological, physical, and chemical attributes of aquatic and terrestrial biophysical systems.</p>
+      <p>My expertise spans the entire research spectrum — from technical payload design, data acquisition, and processing to academic dissemination. I am highly proficient in multidimensional data analysis, image processing, and the development of bio-optical models to retrieve biochemical features through statistical learning and radiative transfer modelling.</p>
+      <p>I have participated in and led fieldwork campaigns in the Arctic (6×), Antarctic (4×), and other remote locations. I have resided in Italy, Mexico, Chile, Argentina, Denmark, Australia, and currently Japan.</p>
     </div>
   </section>
 
+  <!-- Positions -->
   <section class="cv-section">
-    <div class="cv-section-label">Positions</div>
+    <div class="cv-section-label">ECR Positions</div>
     <div class="entries">
+
       <div class="entry">
-        <div class="entry-date">2024 —<br>present</div>
+        <div class="entry-date">2024<br>— now</div>
         <div class="entry-body">
-          <div class="entry-title">Position Title</div>
-          <div class="entry-org">Institution / Organisation</div>
-          <div class="entry-desc">Brief description of role and responsibilities.</div>
+          <div class="entry-title">JSPS Post-doctoral Fellow</div>
+          <div class="entry-org">Field Center for Northern Biosphere, Hokkaido University, Japan</div>
+          <div class="entry-desc">Developing innovative SWIR imaging solutions (800–2200 nm) to quantify cryogenic gypsum formation and distribution within sea ice — a key ballasting agent for organic carbon sequestration in polar oceans. Collaboration with Dr. Daiki Nomura, Dr. Atsushi Ooki, and Associate Professors Toyota &amp; Iizuka (ILTS).</div>
         </div>
       </div>
+
       <div class="entry">
-        <div class="entry-date">2021 —<br>2024</div>
+        <div class="entry-date">2022<br>— now</div>
         <div class="entry-body">
-          <div class="entry-title">Previous Position</div>
-          <div class="entry-org">Institution / Organisation</div>
-          <div class="entry-desc">Brief description of role and responsibilities.</div>
+          <div class="entry-title">Research Associate in Under-Ice Mapping</div>
+          <div class="entry-org">ACEAS / IMAS, University of Tasmania, Australia</div>
+          <div class="entry-desc">Designed the acoustically aided under-ice ROV 'HICYBOT' for hyperspectral imaging of Antarctic marine environments, integrated with USBL positioning, GNSS, and INS. Demonstrated system capabilities for mapping under-ice ecosystems (biomass, photophysiology) and Antarctic seafloor classification.</div>
         </div>
       </div>
+
+      <div class="entry">
+        <div class="entry-date">2020<br>— 2022</div>
+        <div class="entry-body">
+          <div class="entry-title">Postdoctoral Research Fellow in Remote Sensing</div>
+          <div class="entry-org">TerraLuma Research, School of Geography, University of Tasmania, Australia</div>
+          <div class="entry-desc">ARC Discovery project — investigated drone-based VNIR/SWIR hyperspectral imaging to derive plant physiological functional traits and spatially explicit optical metrics of forest functional diversity. Conducted surveys over Australian Eucalypt vegetation, Tasmanian rainforests, and Antarctic moss beds. Oversaw ARC Linkage-funded sensor calibration facility.</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
+  <!-- Education -->
   <section class="cv-section">
     <div class="cv-section-label">Education</div>
     <div class="entries">
+
       <div class="entry">
-        <div class="entry-date">20xx —<br>20xx</div>
+        <div class="entry-date">2016<br>— 2020</div>
         <div class="entry-body">
-          <div class="entry-title">PhD — Degree title</div>
-          <div class="entry-org">University</div>
-          <div class="entry-desc">Thesis: "Thesis title goes here"</div>
+          <div class="entry-title">PhD — Physical and Natural Sciences</div>
+          <div class="entry-org">Institute for Marine and Antarctic Studies (IMAS), University of Tasmania, Australia</div>
+          <div class="entry-thesis">Thesis: "Development of hyperspectral and RGB imaging systems for under-ice mapping of fine-scale sea-ice biophysical properties."</div>
         </div>
       </div>
+
       <div class="entry">
-        <div class="entry-date">20xx —<br>20xx</div>
+        <div class="entry-date">2013<br>— 2015</div>
         <div class="entry-body">
-          <div class="entry-title">MSc — Degree title</div>
-          <div class="entry-org">University</div>
+          <div class="entry-title">MSc — Civil and Environmental Engineering</div>
+          <div class="entry-org">Technical University of Denmark (DTU), Denmark</div>
+          <div class="entry-thesis">Thesis: "High-resolution snow depth mapping in the Arctic using UAVs and Digital Photogrammetry." — Funded by Arctic Field Grant (RCN), GrønlandsBANKEN &amp; SAFT.</div>
         </div>
       </div>
+
+      <div class="entry">
+        <div class="entry-date">2008<br>— 2013</div>
+        <div class="entry-body">
+          <div class="entry-title">BSc — Civil and Environmental Engineering</div>
+          <div class="entry-org">University of Padua, Italy</div>
+          <div class="entry-thesis">Thesis: "Vortex-Induced Cross Flow Seiching: Experiments on an open channel flow."</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
+  <!-- Publications -->
   <section class="cv-section">
-    <div class="cv-section-label">Selected Publications</div>
+    <div class="cv-section-label">Peer-Reviewed Publications</div>
+    <div class="pub-stats">
+      13 publications · 6 as first author · 234 citations · h-index 8 ·
+      <a href="https://scholar.google.com/citations?user=JWIP2tIAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar ↗</a> ·
+      <a href="https://www.researchgate.net/profile/Emiliano_Cimoli" target="_blank" rel="noopener">ResearchGate ↗</a>
+    </div>
     <div class="pub-list">
-      <div class="pub">
-        <div class="pub-title">Publication title goes here — to be filled from Word file</div>
-        <div class="pub-meta">Author A, <strong style="color:rgba(255,255,255,0.55)">Cimoli E</strong>, Author C · Journal · Year<a class="pub-link" href="#">DOI ↗</a></div>
+
+      <div class="pub first-author">
+        <div class="pub-title">Mapping functional diversity of canopy physiological traits using UAS imaging spectroscopy</div>
+        <div class="pub-meta"><span class="pub-me">Cimoli E</span>, Lucieer A, Malenovský Z, Woodgate W, Janoutová R, Turner D, Haynes RS, Phinn S · <span class="pub-journal">Remote Sensing of Environment</span> · 2024<a class="pub-doi" href="https://doi.org/10.1016/j.rse.2023.113958" target="_blank" rel="noopener">DOI ↗</a></div>
       </div>
+
       <div class="pub">
-        <div class="pub-title">Second publication title goes here</div>
-        <div class="pub-meta"><strong style="color:rgba(255,255,255,0.55)">Cimoli E</strong>, Author B · Journal · Year<a class="pub-link" href="#">DOI ↗</a></div>
+        <div class="pub-title">Mapping water content in drying Antarctic moss communities using UAS-borne SWIR imaging spectroscopy</div>
+        <div class="pub-meta">Turner D, <span class="pub-me">Cimoli E</span>, Lucieer A, Haynes RS, Randall K, Waterman MJ, Lucieer V, Robinson SA · <span class="pub-journal">Remote Sensing in Ecology and Conservation</span> · 2023<a class="pub-doi" href="https://doi.org/10.1002/rse2.371" target="_blank" rel="noopener">DOI ↗</a></div>
       </div>
+
+      <div class="pub first-author">
+        <div class="pub-title">Mapping the in situ microspatial distribution of ice algal biomass through hyperspectral imaging of sea-ice cores</div>
+        <div class="pub-meta"><span class="pub-me">Cimoli E</span>, Lucieer V, Meiners KM, Chennu A, Castrisios K, Ryan KG, Lund-Hansen LC, Martin A, Kennedy F, Lucieer A · <span class="pub-journal">Scientific Reports</span> · 2020<a class="pub-doi" href="https://doi.org/10.1038/s41598-020-79084-6" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
       <div class="pub">
-        <div class="pub-title">Third publication title goes here</div>
-        <div class="pub-meta">Author A, Author B, <strong style="color:rgba(255,255,255,0.55)">Cimoli E</strong> · Journal · Year<a class="pub-link" href="#">DOI ↗</a></div>
+        <div class="pub-title">Rapid Manipulation in Irradiance Induces Oxidative Free-Radical Release in a Fast-Ice Algal Community</div>
+        <div class="pub-meta">Kennedy F, Martin A, Castrisios K, <span class="pub-me">Cimoli E</span>, McMinn A, Ryan KG · <span class="pub-journal">Frontiers in Plant Science</span> · 2020<a class="pub-doi" href="https://doi.org/10.3389/fpls.2020.588005" target="_blank" rel="noopener">DOI ↗</a></div>
       </div>
+
+      <div class="pub first-author">
+        <div class="pub-title">An Under-Ice Hyperspectral and RGB Imaging System to Capture Fine-Scale Biophysical Properties of Sea Ice</div>
+        <div class="pub-meta"><span class="pub-me">Cimoli E</span>, Meiners KM, Lucieer A, Lucieer V · <span class="pub-journal">Remote Sensing</span> · 2019<a class="pub-doi" href="https://doi.org/10.3390/rs11232860" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Underwater Hyperspectral Imaging (UHI): A Review of Systems and Applications for Proximal Seafloor Ecosystem Studies</div>
+        <div class="pub-meta">Montes-Herrera JC, <span class="pub-me">Cimoli E</span>, Cummings V, Hill N, Lucieer A, Lucieer V · <span class="pub-journal">Remote Sensing</span> · 2021<a class="pub-doi" href="https://doi.org/10.3390/rs13173451" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Life beneath the ice: jellyfish and ctenophores from the Ross Sea, Antarctica, with an image-based training set for machine learning</div>
+        <div class="pub-meta">Verhaegen G, <span class="pub-me">Cimoli E</span>, Lindsay D · <span class="pub-journal">Biodiversity Data Journal</span> · 2021<a class="pub-doi" href="https://doi.org/10.3897/BDJ.9.e69374" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="pub first-author">
+        <div class="pub-title">Towards improved estimates of sea-ice algal biomass: experimental assessment of hyperspectral imaging cameras for under-ice studies</div>
+        <div class="pub-meta"><span class="pub-me">Cimoli E</span>, Lucieer A, Meiners KM, Lund-Hansen LC, Kennedy F, Martin A, McMinn A, Lucieer V · <span class="pub-journal">Annals of Glaciology</span> · 2017<a class="pub-doi" href="https://doi.org/10.1017/aog.2017.6" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="pub first-author">
+        <div class="pub-title">Application of Low-Cost UASs and Digital Photogrammetry for High-Resolution Snow Depth Mapping in the Arctic</div>
+        <div class="pub-meta"><span class="pub-me">Cimoli E</span>, Marcer M, Vandecrux B, Bøggild CE, Williams G, Simonsen SB · <span class="pub-journal">Remote Sensing</span> · 2017<a class="pub-doi" href="https://doi.org/10.3390/rs9111144" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="pub first-author">
+        <div class="pub-title">Spatial variability in sea-ice algal biomass: an under-ice remote sensing perspective</div>
+        <div class="pub-meta"><span class="pub-me">Cimoli E</span>, Meiners KM, Lund-Hansen LC, Lucieer V · <span class="pub-journal">Advances in Polar Science</span> · 2017<a class="pub-doi" href="https://doi.org/10.13679/j.advps.2017.4.00268" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-title">Three Decades of Volume Change of a Small Greenlandic Glacier Using Ground Penetrating Radar, Structure from Motion, and Aerial Photogrammetry</div>
+        <div class="pub-meta">Marcer M, Stentoft PA, Bjerre E, <span class="pub-me">Cimoli E</span>, Bjørk A, Stenseng L, Machguth H · <span class="pub-journal">Arctic, Antarctic, and Alpine Research</span> · 2017<a class="pub-doi" href="https://doi.org/10.1657/AAAR0016-049" target="_blank" rel="noopener">DOI ↗</a></div>
+      </div>
+
     </div>
   </section>
 
+  <!-- Grants & Awards -->
   <section class="cv-section">
-    <div class="cv-section-label">Skills &amp; Tools</div>
-    <div class="skills">
-      <span class="skill">Python</span>
-      <span class="skill">MATLAB</span>
-      <span class="skill">R</span>
-      <span class="skill">Remote Sensing</span>
-      <span class="skill">GIS</span>
-      <span class="skill">Radiative Transfer Modelling</span>
-      <span class="skill">Field Oceanography</span>
-      <span class="skill">Scientific Writing</span>
+    <div class="cv-section-label">Grants &amp; Awards</div>
+    <div class="award-list">
+      <div class="award"><div class="award-year">2024</div><div><div class="award-name">Nature's Working Scientist Photo Competition — Winner</div></div></div>
+      <div class="award"><div class="award-year">2021</div><div><div class="award-name">Most Inspiring PhD Thesis</div><div class="award-org">University of Tasmania Alumni Awards</div></div></div>
+      <div class="award"><div class="award-year">2021</div><div><div class="award-name">Marine Science in Action Film Festival — 2nd place</div><div class="award-org">Australian Marine Sciences Association (AMSA)</div></div></div>
+      <div class="award"><div class="award-year">2020</div><div><div class="award-name">Write-up Scholarship</div><div class="award-org">Australian Research Council (ARC) / Antarctic Gateway Partnership</div></div></div>
+      <div class="award"><div class="award-year">2018</div><div><div class="award-name">Selection &amp; Travel Grant — World-Class PhD School in Baffin Bay</div><div class="award-org">Sentinel North, Université Laval</div></div></div>
+      <div class="award"><div class="award-year">2018</div><div><div class="award-name">Postgraduate Travel &amp; Research Abroad Grant</div><div class="award-org">University of Tasmania</div></div></div>
+      <div class="award"><div class="award-year">2017</div><div><div class="award-name">Best Poster — Symposium on the Cryosphere in a Changing Climate</div><div class="award-org">International Glaciological Society (IGS)</div></div></div>
+      <div class="award"><div class="award-year">2016</div><div><div class="award-name">ARC Top-up Scholarship</div><div class="award-org">Australian Research Council</div></div></div>
+      <div class="award"><div class="award-year">2016</div><div><div class="award-name">Tasmania Graduate Research Scholarship</div><div class="award-org">University of Tasmania</div></div></div>
+      <div class="award"><div class="award-year">2015</div><div><div class="award-name">Commitment Scholarship for Arctic Fieldwork</div><div class="award-org">Society for Arctic Research and Technology (SAFT)</div></div></div>
+      <div class="award"><div class="award-year">2015</div><div><div class="award-name">Research Funding — Greenland</div><div class="award-org">GrønlandsBANKEN</div></div></div>
+      <div class="award"><div class="award-year">2014</div><div><div class="award-name">Arctic Field Grant (AFG)</div><div class="award-org">Norwegian Research Council</div></div></div>
     </div>
   </section>
 
-  <div class="cv-footer">Full CV available on request · emicimoli@gmail.com</div>
+  <!-- Conferences -->
+  <section class="cv-section">
+    <div class="cv-section-label">Selected Conferences</div>
+    <div class="conf-list">
+      <div class="conf"><div class="conf-year">2024</div><div class="conf-body"><div class="conf-name">AMSA &amp; NZMSS Conference<span class="conf-role talk">Talk</span></div><div class="conf-loc">Hobart, Tasmania, Australia</div></div></div>
+      <div class="conf"><div class="conf-year">2024</div><div class="conf-body"><div class="conf-name">XI SCAR Open Science Conference<span class="conf-role poster">Poster</span></div><div class="conf-loc">Pucón, Chile</div></div></div>
+      <div class="conf"><div class="conf-year">2023</div><div class="conf-body"><div class="conf-name">Gordon Research Conference — Polar Marine Science<span class="conf-role invited">Invited</span></div><div class="conf-loc">Ventura, CA, USA</div></div></div>
+      <div class="conf"><div class="conf-year">2022</div><div class="conf-body"><div class="conf-name">Advancing Earth Observation (AEO) Forum<span class="conf-role talk">Talk</span></div><div class="conf-loc">Brisbane, Australia</div></div></div>
+      <div class="conf"><div class="conf-year">2021</div><div class="conf-body"><div class="conf-name">Antarctic and Southern Ocean Technology Forum — IEEE<span class="conf-role talk">Talk</span></div><div class="conf-loc">Online</div></div></div>
+      <div class="conf"><div class="conf-year">2019</div><div class="conf-body"><div class="conf-name">Gordon Research Conference — Polar Marine Science<span class="conf-role poster">Poster</span></div><div class="conf-loc">Barga, Italy</div></div></div>
+      <div class="conf"><div class="conf-year">2018</div><div class="conf-body"><div class="conf-name">IGS Symposium on the Cryosphere and Biosphere<span class="conf-role talk">Talk</span></div><div class="conf-loc">Kyoto, Japan</div></div></div>
+      <div class="conf"><div class="conf-year">2017</div><div class="conf-body"><div class="conf-name">New Zealand Antarctic Science Conference<span class="conf-role talk">Talk</span></div><div class="conf-loc">Dunedin, New Zealand</div></div></div>
+      <div class="conf"><div class="conf-year">2017</div><div class="conf-body"><div class="conf-name">IGS Symposium on the Cryosphere in a Changing Climate<span class="conf-role poster">Poster ★ Best</span></div><div class="conf-loc">Wellington, New Zealand</div></div></div>
+      <div class="conf"><div class="conf-year">2015</div><div class="conf-body"><div class="conf-name">Nordic International Glaciological Society Meeting<span class="conf-role poster">Poster</span></div><div class="conf-loc">Copenhagen, Denmark</div></div></div>
+    </div>
+  </section>
+
+  <!-- Supervision & Teaching -->
+  <section class="cv-section">
+    <div class="cv-section-label">Supervision &amp; Teaching</div>
+    <div class="entries">
+      <div class="entry">
+        <div class="entry-date">PhD</div>
+        <div class="entry-body">
+          <div class="entry-title">Juan Carlos Montes-Herrera</div>
+          <div class="entry-org">Completed</div>
+          <div class="entry-desc">"Proximal Remote Sensing of Seafloor Communities with Underwater Imaging Techniques"</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-date">PhD</div>
+        <div class="entry-body">
+          <div class="entry-title">Ryan S. Haynes</div>
+          <div class="entry-org">Ongoing</div>
+          <div class="entry-desc">"Advancing multi-scale imaging spectroscopy from airborne platforms for ecosystem monitoring"</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-date">Hons</div>
+        <div class="entry-body">
+          <div class="entry-title">Sabrina Eliatamby &amp; Ryan S. Haynes</div>
+          <div class="entry-org">Completed</div>
+          <div class="entry-desc">Undergraduate honours projects in Antarctic sea-ice ecology and hyperspectral water-stress analysis.</div>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-date">Units</div>
+        <div class="entry-body">
+          <div class="entry-title">Lecturer &amp; Unit Redesign</div>
+          <div class="entry-org">GPSS / IMAS, University of Tasmania</div>
+          <div class="entry-desc">Restructured KGG213 (Remote Sensing: From Data to Information) and KGG543 (Advanced Earth Observation). Regular lecturer in QMS515 (Techniques in Remote Sensing) and KSA324 (Oceanographic Methods). Supervising research group for KGA704 (Professional Research Practice).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Media & Outreach -->
+  <section class="cv-section">
+    <div class="cv-section-label">Media &amp; Outreach</div>
+    <div class="media-list">
+      <div class="media-item">
+        <div class="media-title">That's What I Call Science — Podcast, Episode 201: Insights from Drone Flights (2023)</div>
+        <a class="media-link" href="https://thatsscience.org/2023/07/09/episode-201-insights-from-drone-flights/" target="_blank" rel="noopener">Listen ↗</a>
+      </div>
+      <div class="media-item">
+        <div class="media-title">Beaker Street Science Photography — Finalist, featured on BBC UK (2020)</div>
+        <a class="media-link" href="https://www.bbc.co.uk/newsround/53850328" target="_blank" rel="noopener">BBC article ↗</a>
+      </div>
+      <div class="media-item">
+        <div class="media-title">Voices from Antarctica 8: Under the Ice — RNZ Podcast</div>
+        <a class="media-link" href="https://www.rnz.co.nz/national/programmes/ourchangingworld/audio/2018755068/voices-from-antarctica-8-under-the-ice" target="_blank" rel="noopener">Listen ↗</a>
+      </div>
+      <div class="media-item">
+        <div class="media-title">CORE Education LEARNZ Virtual Field Trip — Featured in documentary on sea-ice organisms</div>
+        <a class="media-link" href="https://vimeo.com/301488157" target="_blank" rel="noopener">Watch ↗</a>
+      </div>
+      <div class="media-item">
+        <div class="media-title">Light and Life Beneath the Ice — IMAS / UTAS Newsletter</div>
+        <a class="media-link" href="https://www.imas.utas.edu.au/news/news-items/light-and-life-beneath-antarctic-sea-ice" target="_blank" rel="noopener">Read ↗</a>
+      </div>
+      <div class="media-item">
+        <div class="media-title">Festival of Bright Ideas — Public seminar: "Mapping Meadows"</div>
+      </div>
+      <div class="media-item">
+        <div class="media-title">Australian Antarctic Festival (2016) — Public talk: Mantis Shrimp Vision Under the Ice</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cv-footer">Full CV available on request · <a href="mailto:emicimoli@gmail.com">emicimoli@gmail.com</a></div>
 
 </div>
 

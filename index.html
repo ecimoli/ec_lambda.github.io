@@ -91,22 +91,22 @@
     .page {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       padding: 56px 24px 52px;
       min-height: 100svh;
     }
 
     .profile {
-      text-align: center;
+      text-align: left;
       width: 100%;
-      max-width: 420px;
+      max-width: 340px;
       margin-bottom: 36px;
       animation: fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
     }
 
     .links-section {
       width: 100%;
-      max-width: 420px;
+      max-width: 340px;
       animation: fadeUp 0.5s 0.08s cubic-bezier(0.22,1,0.36,1) both;
     }
 
@@ -117,8 +117,8 @@
       .page {
         flex-direction: row;
         align-items: flex-start;
-        justify-content: center;
-        gap: 72px;
+        justify-content: flex-start;
+        gap: 52px;
         padding: 88px 56px 72px;
       }
 
@@ -128,16 +128,16 @@
         text-align: left;
         margin-bottom: 0;
         flex-shrink: 0;
-        width: 210px;
-        max-width: 210px;
+        width: 180px;
+        max-width: 180px;
       }
 
       .profile .avatar    { margin-left: 0; margin-right: 0; }
       .profile .aliases   { justify-content: flex-start; }
 
       .links-section {
-        max-width: 380px;
-        flex: 1;
+        max-width: 300px;
+        flex: none;
         min-width: 0;
       }
     }

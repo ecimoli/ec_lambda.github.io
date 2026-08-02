@@ -225,6 +225,21 @@
       color: rgba(255,255,255,0.55);
       padding: 0 8px;
       margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .section-label.accent { color: rgba(163,193,248,0.85); }
+    .section-label.dim    { color: rgba(255,255,255,0.22); }
+    .soon-badge {
+      font-size: 8.5px;
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 2px 6px;
     }
 
     /* ── Link buttons ── */
@@ -404,8 +419,8 @@
   <!-- ── Right / Bottom: Links ── -->
   <main class="links-section">
 
-    <!-- Research -->
-    <div class="section-label">Research</div>
+    <!-- Research & Academia -->
+    <div class="section-label accent">Research & Academia</div>
     <div class="links">
 
       <a class="link-btn gs" href="https://scholar.google.com/citations?user=JWIP2tIAAAAJ" target="_blank" rel="noopener noreferrer">
@@ -423,24 +438,28 @@
         <span class="link-label">ORCID</span>
       </a>
 
-    </div>
-
-    <hr>
-
-    <!-- CV -->
-    <div class="section-label">CV</div>
-    <div class="links">
       <a class="link-btn cv" href="cv.html">
         <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm-1 1.5L18.5 9H13V3.5zM8 17h8v1.5H8V17zm0-3h8v1.5H8V14zm0-3h4v1.5H8V11z"/></svg></div>
         <span class="link-label">Academic CV</span>
       </a>
+
     </div>
 
     <hr>
 
-    <!-- Social & Media -->
-    <div class="section-label">Social & Media</div>
+    <!-- Creative & Visual -->
+    <div class="section-label">Creative & Visual</div>
     <div class="links">
+
+      <a class="link-btn fl" href="https://flickr.com/people/emicimoli" target="_blank" rel="noopener noreferrer">
+        <div class="icon-wrap"><div class="fl-icon"><span class="fl-dot-pink"></span><span class="fl-dot-blue"></span></div></div>
+        <span class="link-label">Flickr</span>
+      </a>
+
+      <a class="link-btn vm" href="https://vimeo.com/user109570515" target="_blank" rel="noopener noreferrer">
+        <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.48 4.807z"/></svg></div>
+        <span class="link-label">Vimeo</span>
+      </a>
 
       <a class="link-btn yt" href="https://www.youtube.com/channel/UCL6fuAt5s8KIDYopH_jcc4w" target="_blank" rel="noopener noreferrer">
         <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg></div>
@@ -462,17 +481,12 @@
         <span class="link-label">LinkedIn</span>
       </a>
 
-      <a class="link-btn vm" href="https://vimeo.com/user109570515" target="_blank" rel="noopener noreferrer">
-        <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M23.977 6.416c-.105 2.338-1.739 5.543-4.894 9.609-3.268 4.247-6.026 6.37-8.29 6.37-1.409 0-2.578-1.294-3.553-3.881L5.322 11.4C4.603 8.816 3.834 7.522 3.01 7.522c-.179 0-.806.378-1.881 1.132L0 7.197c1.185-1.044 2.351-2.084 3.501-3.128C5.08 2.701 6.266 1.984 7.055 1.91c1.867-.18 3.016 1.1 3.447 3.838.465 2.953.789 4.789.971 5.507.539 2.45 1.131 3.674 1.776 3.674.502 0 1.256-.796 2.265-2.385 1.004-1.589 1.54-2.797 1.612-3.628.144-1.371-.395-2.061-1.614-2.061-.574 0-1.167.121-1.777.391 1.186-3.868 3.434-5.757 6.762-5.637 2.473.06 3.628 1.664 3.48 4.807z"/></svg></div>
-        <span class="link-label">Vimeo</span>
-      </a>
-
-      <a class="link-btn fl" href="https://flickr.com/people/emicimoli" target="_blank" rel="noopener noreferrer">
-        <div class="icon-wrap"><div class="fl-icon"><span class="fl-dot-pink"></span><span class="fl-dot-blue"></span></div></div>
-        <span class="link-label">Flickr</span>
-      </a>
-
     </div>
+
+    <hr>
+
+    <!-- Sounds -->
+    <div class="section-label dim">Sounds <span class="soon-badge">soon</span></div>
 
     <hr>
 
@@ -501,6 +515,12 @@
       </a>
 
     </div>
+
+    <hr>
+
+    <!-- Projects -->
+    <div class="section-label dim">Projects <span class="soon-badge">soon</span></div>
+
   </main>
 
 </div>

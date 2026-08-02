@@ -93,71 +93,46 @@
     }
 
     /* ══════════════════════════════
-       MOBILE — single column
+       LAYOUT — single column
     ══════════════════════════════ */
     .page {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding: 56px 32px 52px 32px;
+      padding: clamp(36px, 8vh, 80px) clamp(24px, 8vw, 56px) 52px clamp(24px, 8vw, 56px);
       min-height: 100svh;
     }
 
+    @media (min-width: 720px) {
+      .page { padding: clamp(60px, 10vh, 100px) 56px 72px clamp(80px, 14vw, 220px); }
+    }
+
     .profile {
-      text-align: left;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
       width: 100%;
-      max-width: 340px;
-      margin-bottom: 36px;
+      max-width: 460px;
+      margin-bottom: 24px;
       animation: fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) both;
     }
 
+    .profile-info { flex: 1; min-width: 0; }
+
     .links-section {
       width: 100%;
-      max-width: 340px;
-      padding: 12px 14px;
+      max-width: 440px;
       animation: fadeUp 0.5s 0.08s cubic-bezier(0.22,1,0.36,1) both;
-    }
-
-    /* ══════════════════════════════
-       DESKTOP — two columns
-    ══════════════════════════════ */
-    @media (min-width: 720px) {
-      .page {
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: flex-start;
-        gap: 52px;
-        padding: 88px 56px 72px clamp(80px, 14vw, 220px);
-      }
-
-      .profile {
-        position: sticky;
-        top: 88px;
-        text-align: left;
-        margin-bottom: 0;
-        flex-shrink: 0;
-        width: 180px;
-        max-width: 180px;
-        padding: 18px 16px;
-      }
-
-      .profile .avatar    { margin-left: 0; margin-right: 0; }
-      .profile .aliases   { justify-content: flex-start; }
-
-      .links-section {
-        max-width: 300px;
-        flex: none;
-        min-width: 0;
-        padding: 14px 16px;
-      }
     }
 
     /* ── Avatar ── */
     .avatar {
-      width: 92px;
-      height: 92px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
-      margin: 0 auto 18px;
+      margin: 0;
+      flex-shrink: 0;
       overflow: hidden;
       position: relative;
       border: 1.5px solid rgba(255,255,255,0.2);
@@ -172,32 +147,32 @@
     .avatar-initials {
       position: absolute; inset: 0;
       display: flex; align-items: center; justify-content: center;
-      font-size: 26px; font-weight: 600; letter-spacing: -1.5px;
+      font-size: 20px; font-weight: 600; letter-spacing: -1px;
       color: rgba(255,255,255,0.6);
     }
     .avatar.has-photo .avatar-initials { display: none; }
 
     /* ── Name / handle ── */
     .name {
-      font-size: 21px;
+      font-size: 17px;
       font-weight: 700;
       letter-spacing: -0.2px;
       color: #ffffff;
-      margin-bottom: 5px;
+      margin-bottom: 2px;
     }
     .handle {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 500;
       color: rgba(255,255,255,0.6);
-      margin-bottom: 14px;
+      margin-bottom: 8px;
     }
 
     /* ── Alias pills ── */
     .aliases {
       display: flex;
       flex-wrap: wrap;
-      gap: 5px;
-      justify-content: center;
+      gap: 4px;
+      justify-content: flex-start;
     }
     .alias {
       font-size: 10.5px;
@@ -213,7 +188,7 @@
     hr {
       border: none;
       border-top: 1px solid rgba(255,255,255,0.1);
-      margin: 28px 0;
+      margin: 14px 0;
     }
 
     /* ── Section labels ── */
@@ -301,51 +276,21 @@
     .fl-dot-pink { background: #FF70AB; }
     .fl-dot-blue { background: #5599EE; }
 
-    /* ── Mobile: profile fixed at top ── */
-    @media (max-width: 719px) {
-      .profile {
-        position: fixed;
-        top: 0; left: 0; right: 0;
-        z-index: 100;
-        max-width: 100%;
-        width: 100%;
-        margin-bottom: 0;
-        padding: 10px 20px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 14px;
-        text-align: left;
-        background: rgba(6, 6, 6, 0.78);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-bottom: 1px solid rgba(255,255,255,0.10);
-        animation: none;
-      }
-      .profile .avatar {
-        width: 40px; height: 40px;
-        flex-shrink: 0;
-        margin: 0;
-      }
-      .profile .avatar-initials { font-size: 14px; letter-spacing: -1px; }
-      .profile .name  { font-size: 15px; margin-bottom: 1px; }
-      .profile .handle { font-size: 11px; margin-bottom: 0; }
-      .profile .aliases { display: none; }
-      .profile .footer { margin-top: 0; margin-left: auto; }
+    /* ── Icon size variants ── */
+    .links.large .icon-wrap { width: 36px; height: 36px; }
+    .links.large .icon-wrap svg { width: 18px; height: 18px; }
+    .links.large .link-label { font-size: 15px; }
+    .links.large .link-btn { padding: 10px 8px; gap: 14px; }
 
-      /* Offset page content below the fixed bar (~64px tall) */
-      .page { padding-top: 74px; }
-
-      /* Light mode: white frosted header */
-      body.lighter .profile {
-        background: rgba(255,255,255,0.82);
-        border-bottom-color: rgba(0,0,0,0.10);
-      }
-    }
+    .links.small .icon-wrap { width: 24px; height: 24px; border-radius: 6px; }
+    .links.small .icon-wrap svg { width: 12px; height: 12px; }
+    .links.small .link-label { font-size: 13px; }
+    .links.small .link-btn { padding: 6px 8px; }
+    .links.small .rg-text { font-size: 9px; }
+    .links.small .fl-icon span { width: 6px; height: 6px; }
 
     /* ── Footer / toggle ── */
-    .footer { margin-top: 32px; text-align: center; }
-    @media (min-width: 720px) { .footer { text-align: left; } }
+    .footer { margin-top: 10px; text-align: left; }
 
     .overlay-btn {
       background: rgba(255,255,255,0.07);
@@ -393,26 +338,28 @@
 
 <div class="page">
 
-  <!-- ── Left / Top: Profile ── -->
+  <!-- ── Profile header ── -->
   <aside class="profile">
     <div class="avatar" id="avatar">
       <img src="photo.jpg" alt="Dr Emiliano Cimoli" id="avatarImg">
       <div class="avatar-initials">EC</div>
     </div>
-    <div class="name">Dr Emiliano Cimoli</div>
-    <div class="handle">@ec_lambda</div>
-    <div class="aliases">
-      <span class="alias">ecimoli</span>
-      <span class="alias">EC_lambda</span>
-      <span class="alias">frost raccoon</span>
-      <span class="alias">Shimori</span>
-      <span class="alias">Blankjin</span>
-    </div>
-    <div class="footer">
-      <button class="overlay-btn" onclick="toggleOverlay()" id="overlayBtn">
-        <span id="overlayIcon">◑</span>
-        <span id="overlayText">Lighter</span>
-      </button>
+    <div class="profile-info">
+      <div class="name">Dr Emiliano Cimoli</div>
+      <div class="handle">@ec_lambda</div>
+      <div class="aliases">
+        <span class="alias">ecimoli</span>
+        <span class="alias">EC_lambda</span>
+        <span class="alias">frost raccoon</span>
+        <span class="alias">Shimori</span>
+        <span class="alias">Blankjin</span>
+      </div>
+      <div class="footer">
+        <button class="overlay-btn" onclick="toggleOverlay()" id="overlayBtn">
+          <span id="overlayIcon">◑</span>
+          <span id="overlayText">Lighter</span>
+        </button>
+      </div>
     </div>
   </aside>
 
@@ -421,7 +368,7 @@
 
     <!-- Research & Academia -->
     <div class="section-label accent">Research & Academia</div>
-    <div class="links">
+    <div class="links large">
 
       <a class="link-btn gs" href="https://scholar.google.com/citations?user=JWIP2tIAAAAJ" target="_blank" rel="noopener noreferrer">
         <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg></div>
@@ -492,7 +439,7 @@
 
     <!-- Games & Film -->
     <div class="section-label">Games & Film</div>
-    <div class="links">
+    <div class="links small">
 
       <a class="link-btn ps" href="https://psnprofiles.com/EC_lambda" target="_blank" rel="noopener noreferrer">
         <div class="icon-wrap"><svg viewBox="0 0 24 24"><path d="M19 5h-2V3H7v2H5C3.9 5 3 5.9 3 7v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 14.9V17H9v2h6v-2h-2v-2.1a5.01 5.01 0 0 0 3.61-2.96C19.08 11.63 21 9.55 21 7V7c0-1.1-.9-2-2-2zM5 8V7h2v2.82C5.84 9.4 5 8.79 5 8zm7 5a3 3 0 0 1-3-3V5h6v5a3 3 0 0 1-3 3zm7-5c0 .79-.84 1.4-2 1.82V7h2v1z"/></svg></div>

@@ -56,9 +56,16 @@
     }
     body.lighter::after { background: rgba(255, 255, 255, 0.30); }
 
-    /* Desktop — uniform overlay, no left gradient needed */
+    /* Desktop — dark ribbon covering the left content zone, fades right */
     @media (min-width: 720px) {
-      body::after { background: rgba(0, 0, 0, 0.32); }
+      body::after {
+        background: linear-gradient(to right,
+          rgba(0,0,0,0.74) 0%,
+          rgba(0,0,0,0.68) 26%,
+          rgba(0,0,0,0.42) 42%,
+          rgba(0,0,0,0.10) 58%,
+          transparent 72%);
+      }
     }
 
     /* ── Light mode text overrides ── */
@@ -107,22 +114,8 @@
     .links-section {
       width: 100%;
       max-width: 340px;
-      position: relative;
-      isolation: isolate;
       padding: 12px 14px;
       animation: fadeUp 0.5s 0.08s cubic-bezier(0.22,1,0.36,1) both;
-    }
-    .links-section::before {
-      content: '';
-      position: absolute;
-      inset: -24px;
-      background: rgba(0, 0, 0, 0.50);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      mask-image: radial-gradient(ellipse 80% 88% at 50% 50%, black 10%, transparent 100%);
-      -webkit-mask-image: radial-gradient(ellipse 80% 88% at 50% 50%, black 10%, transparent 100%);
-      z-index: -1;
-      pointer-events: none;
     }
 
     /* ══════════════════════════════
@@ -139,7 +132,6 @@
 
       .profile {
         position: sticky;
-        isolation: isolate;
         top: 88px;
         text-align: left;
         margin-bottom: 0;
@@ -147,18 +139,6 @@
         width: 180px;
         max-width: 180px;
         padding: 18px 16px;
-      }
-      .profile::before {
-        content: '';
-        position: absolute;
-        inset: -24px;
-        background: rgba(0, 0, 0, 0.46);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, black 10%, transparent 100%);
-        -webkit-mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, black 10%, transparent 100%);
-        z-index: -1;
-        pointer-events: none;
       }
 
       .profile .avatar    { margin-left: 0; margin-right: 0; }

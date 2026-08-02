@@ -54,8 +54,6 @@
       z-index: -1;
       transition: background 0.4s ease;
     }
-    body.lighter::after { background: rgba(255, 255, 255, 0.30); }
-
     /* Desktop — dark ribbon covering the left content zone, fades right */
     @media (min-width: 720px) {
       body::after {
@@ -67,23 +65,6 @@
           transparent 72%);
       }
     }
-
-    /* ── Light mode text overrides ── */
-    body.lighter                        { color: #111111; }
-    body.lighter .name                  { color: #0a0a0a; }
-    body.lighter .handle                { color: rgba(0,0,0,0.45); }
-    body.lighter .alias                 { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.5); border-color: rgba(0,0,0,0.1); }
-    body.lighter hr                     { border-color: rgba(0,0,0,0.1); }
-    body.lighter .section-label         { color: rgba(0,0,0,0.32); }
-    body.lighter .link-btn              { color: rgba(0,0,0,0.72); }
-    body.lighter .link-btn:hover        { background: rgba(0,0,0,0.06); color: #000000; }
-    body.lighter .icon-wrap             { background: rgba(0,0,0,0.07); }
-    body.lighter .link-btn:hover .icon-wrap { background: rgba(0,0,0,0.12); }
-    body.lighter .overlay-btn           { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.12); color: rgba(0,0,0,0.45); }
-    body.lighter .overlay-btn:hover     { background: rgba(0,0,0,0.12); color: rgba(0,0,0,0.75); }
-    body.lighter .rg-text               { color: #1aaa9e; }
-    body.lighter .avatar                { border-color: rgba(0,0,0,0.18); background: rgba(0,0,0,0.06); }
-    body.lighter .avatar-initials       { color: rgba(0,0,0,0.5); }
 
     body {
       font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -289,27 +270,6 @@
     .links.small .rg-text { font-size: 9px; }
     .links.small .fl-icon span { width: 6px; height: 6px; }
 
-    /* ── Footer / toggle ── */
-    .footer { margin-top: 10px; text-align: left; }
-
-    .overlay-btn {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 100px;
-      padding: 6px 14px;
-      font-size: 11.5px;
-      color: rgba(255,255,255,0.45);
-      cursor: pointer;
-      font-family: inherit;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: background 0.13s, color 0.13s;
-    }
-    .overlay-btn:hover {
-      background: rgba(255,255,255,0.13);
-      color: rgba(255,255,255,0.8);
-    }
 
     /* ── Entrance animation ── */
     @keyframes fadeUp {
@@ -353,12 +313,6 @@
         <span class="alias">frost raccoon</span>
         <span class="alias">Shimori</span>
         <span class="alias">Blankjin</span>
-      </div>
-      <div class="footer">
-        <button class="overlay-btn" onclick="toggleOverlay()" id="overlayBtn">
-          <span id="overlayIcon">◑</span>
-          <span id="overlayText">Lighter</span>
-        </button>
       </div>
     </div>
   </aside>
@@ -478,14 +432,6 @@
   img.addEventListener('load',  () => { img.classList.add('loaded'); av.classList.add('has-photo'); });
   img.addEventListener('error', () => img.remove());
 
-  let lighter = false;
-  function toggleOverlay() {
-    lighter = !lighter;
-    document.body.classList.toggle('lighter', lighter);
-    document.getElementById('overlayText').textContent = lighter ? 'Darker' : 'Lighter';
-    localStorage.setItem('ec-overlay', lighter ? '1' : '0');
-  }
-  if (localStorage.getItem('ec-overlay') === '1') toggleOverlay();
 </script>
 
 </body>
